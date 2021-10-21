@@ -1,24 +1,23 @@
 const { assert } = require('chai');
-const SimpleFactory = artifacts.require("./SimpleFactory");
+const SimpleStorage = artifacts.require("./SimpleStorage");
 
 
 require('chai')
 .use(require('chai-as-promised'))
 .should()
 
-contract('SimpleFactory', async () => {
+contract('SimpleStorage', async () => {
 
-    let simpleFactory;
+    let simpleStorage;
     let favoriteNumber; 
 
     before( async() => {
-        simpleFactory = await SimpleFactory.deployed();
-        favoriteNumber = await simpleFactory.store(2);
+        simpleStorage = await SimpleStorage.deployed();
     })
 
     describe('deployment', async() => {
         it('deploy successful', async() => {
-            const address = await simpleFactory.address;
+            const address = await SimpleStorage.address;
             assert.notEqual(address, 0x0);
             assert.notEqual(address, null);
             assert.notEqual(address, undefined);
